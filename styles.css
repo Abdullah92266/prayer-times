@@ -1,55 +1,94 @@
-/* Global styles */
+/* Body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif; /* Clean font */
+    background-color: #f4f7f9; /* Light gray background */
+    color: #333; /* Dark text for good contrast */
     margin: 0;
     padding: 0;
-}
-
-.container {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Styling for each prayer box */
-.prayer-box {
-    background-color: #fff;
-    border-radius: 10px;
-    border: 2px solid #3498db;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    margin: 15px;
+/* Main container */
+.container {
+    background-color: #ffffff; /* White background for the table */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
     padding: 20px;
+    width: 80%;
+    max-width: 800px;
     text-align: center;
-    transition: transform 0.3s ease;
 }
 
-.prayer-box h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #2c3e50;
+/* Heading Styling */
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font for heading */
+    color: #4CAF50; /* Green color for the heading */
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.prayer-box p {
-    font-size: 1.1em;
-    color: #34495e;
-    margin: 5px 0;
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.prayer-box:hover {
-    transform: scale(1.05);
+/* Table Header */
+th {
+    background-color: #4CAF50; /* Green background for header */
+    color: white; /* White text */
+    padding: 12px;
+    font-size: 18px;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 600px) {
+/* Table Data */
+td {
+    background-color: #f9f9f9; /* Light gray background for data */
+    color: #555; /* Slightly lighter text for table data */
+    padding: 12px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Hover Effect for Table Rows */
+tr:hover {
+    background-color: #f1f1f1; /* Change background when hovering over a row */
+    cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+/* Button Styling */
+button {
+    background-color: #4CAF50; /* Green background for button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Responsive Design: For mobile devices */
+@media (max-width: 768px) {
     .container {
-        flex-direction: column;
-        align-items: center;
+        padding: 15px;
     }
 
-    .prayer-box {
-        width: 80%;
+    table {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
     }
 }
