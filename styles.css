@@ -1,94 +1,104 @@
-/* Body styling */
-body {
-    font-family: 'Arial', sans-serif; /* Clean font */
-    background-color: #f4f7f9; /* Light gray background */
-    color: #333; /* Dark text for good contrast */
+/* Reset default margins and padding */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-
-/* Main container */
-.container {
-    background-color: #ffffff; /* White background for the table */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
+    margin: 0;
     padding: 20px;
-    width: 80%;
-    max-width: 800px;
-    text-align: center;
+    overflow-x: hidden;
 }
 
-/* Heading Styling */
-h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font for heading */
-    color: #4CAF50; /* Green color for the heading */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Table Styling */
-table {
+/* Container for Prayer Boxes */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
 }
 
-/* Table Header */
-th {
-    background-color: #4CAF50; /* Green background for header */
-    color: white; /* White text */
-    padding: 12px;
-    font-size: 18px;
-}
-
-/* Table Data */
-td {
-    background-color: #f9f9f9; /* Light gray background for data */
-    color: #555; /* Slightly lighter text for table data */
-    padding: 12px;
-    font-size: 16px;
+/* Styling Each Prayer Box */
+.prayer-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-/* Hover Effect for Table Rows */
-tr:hover {
-    background-color: #f1f1f1; /* Change background when hovering over a row */
-    cursor: pointer; /* Change cursor to indicate interactivity */
-}
-
-/* Button Styling */
-button {
-    background-color: #4CAF50; /* Green background for button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    border: 2px solid #ddd;
+    margin: 10px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
-/* Button Hover Effect */
-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+.prayer-box:hover {
+    transform: scale(1.05); /* Hover effect for better interactivity */
 }
 
-/* Responsive Design: For mobile devices */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
+/* Styling for Prayer Title (Fajr, Dhuhr, etc.) */
+.prayer-box h3 {
+    color: #4caf50;  /* Green color for prayer names */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Styling for Time Text */
+.prayer-box p {
+    color: #555;
+    font-weight: bold;
+}
+
+/* Styling for Countdown Text */
+span {
+    color: #ff5722;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Media Queries for Mobile and Tablet Responsiveness */
+
+/* Tablets and Small Screens */
+@media screen and (max-width: 768px) {
+    .prayer-box {
+        width: 100%;  /* Make the boxes take up the full width on small screens */
     }
 
-    table {
-        font-size: 14px;
+    .prayer-box h3 {
+        font-size: 20px;
     }
 
-    h1 {
-        font-size: 22px;
+    span {
+        font-size: 18px;
+    }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .prayer-box {
+        width: 100%;  /* Boxes take up full width on mobile */
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .prayer-box h3 {
+        font-size: 18px;
+    }
+
+    span {
+        font-size: 16px;
     }
 }
