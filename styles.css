@@ -30,34 +30,44 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Styling for the prayer boxes container */
+.prayer-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
-/* Table Header */
-th {
-    background-color: #4CAF50; /* Green background for header */
-    color: white; /* White text */
-    padding: 12px;
-    font-size: 18px;
-}
-
-/* Table Data */
-td {
-    background-color: #f9f9f9; /* Light gray background for data */
-    color: #555; /* Slightly lighter text for table data */
-    padding: 12px;
-    font-size: 16px;
+/* Individual prayer box styling */
+.prayer-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #4CAF50; /* Green border for each prayer box */
+    padding: 20px;
+    width: 150px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-/* Hover Effect for Table Rows */
-tr:hover {
-    background-color: #f1f1f1; /* Change background when hovering over a row */
-    cursor: pointer; /* Change cursor to indicate interactivity */
+/* Hover effect for prayer boxes */
+.prayer-box:hover {
+    background-color: #4CAF50; /* Change background color on hover */
+    color: white; /* Change text color to white */
+    transform: scale(1.05); /* Slightly increase the size on hover */
+}
+
+/* Prayer title styling */
+.prayer-box h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Prayer time styling */
+.prayer-box p {
+    font-size: 16px;
+    margin: 5px 0;
 }
 
 /* Button Styling */
@@ -84,8 +94,8 @@ button:hover {
         padding: 15px;
     }
 
-    table {
-        font-size: 14px;
+    .prayer-box {
+        width: 120px; /* Smaller boxes for smaller screens */
     }
 
     h1 {
