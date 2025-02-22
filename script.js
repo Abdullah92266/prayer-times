@@ -1,44 +1,53 @@
-// Function to update the countdown timers for each prayer and iqamah
-function updatePrayerTimers() {
-    const prayers = [
-        { name: "Fajr", prayerTime: "05:00 AM", iqamahTime: "05:30 AM" },
-        { name: "Dhuhr", prayerTime: "12:30 PM", iqamahTime: "01:00 PM" },
-        { name: "Asr", prayerTime: "03:45 PM", iqamahTime: "04:00 PM" },
-        { name: "Maghrib", prayerTime: "06:15 PM", iqamahTime: "06:30 PM" },
-        { name: "Isha", prayerTime: "08:00 PM", iqamahTime: "08:30 PM" }
-    ];
+// Prayer times for the day in HH:MM format
+const prayerTimes = {
+    fajr: "05:00",
+    dhuhr: "12:30",
+    asr: "16:00",
+    maghrib: "18:45",
+    isha: "20:30"
+};
 
-    prayers.forEach(prayer => {
-        const prayerTime = new Date(`1970-01-01T${prayer.prayerTime}`);
-        const iqamahTime = new Date(`1970-01-01T${prayer.iqamahTime}`);
-        
-        const now = new Date();
+// Iqamah times for each prayer in HH:MM format (replace with actual iqamah times)
+const iqamahTimes = {
+    fajr: "05:30",
+    dhuhr: "13:00",
+    asr: "16:30",
+    maghrib: "19:00",
+    isha: "21:00"
+};
 
-        // Calculate the time remaining for prayer and iqamah
-        const prayerTimeDiff = prayerTime - now;
-        const iqamahTimeDiff = iqamahTime - now;
+// Function to calculate time left until next prayer or iqamah
+function timeLeft(prayerTime) {
+    const now = new Date();
+    const [hours, minutes] = prayerTime.split(':');
+    const prayerDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+    
+    // If prayer time is already passed for today, set it to the next day
+    if (prayerDate < now) {
+        prayerDate.setDate(prayerDate.getDate() + 1);
+    }
 
-        // Update the timer for prayer and iqamah
-        document.getElementById(`${prayer.name.toLowerCase()}-timer`).textContent = `Time Left: ${formatTime(prayerTimeDiff)}`;
-        document.getElementById(`${prayer.name.toLowerCase()}-iqamah-timer`).textContent = `Iqamah Left: ${formatTime(iqamahTimeDiff)}`;
-    });
+    const diff = prayerDate - now;
+    const hoursLeft = Math.floor(diff / 1000 / 60 / 60);
+    const minutesLeft = Math.floor((diff / 1000 / 60) % 60);
+    const secondsLeft = Math.floor((diff / 1000) % 60);
+    
+    return `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
 }
 
-// Helper function to format the time in HH:MM:SS format
-function formatTime(timeDiff) {
-    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+// Update the countdown for next prayer and iqamah
+function updateCountdowns() {
+    document.getElementById('fajr-time').innerText = timeLeft(prayerTimes.fajr);
+    document.getElementById('fajr-iqamah').innerText = timeLeft(iqamahTimes.fajr);
+    document.getElementById('dhuhr-time').innerText = timeLeft(prayerTimes.dhuhr);
+    document.getElementById('dhuhr-iqamah').innerText = timeLeft(iqamahTimes.dhuhr);
+    document.getElementById('asr-time').innerText = timeLeft(prayerTimes.asr);
+    document.getElementById('asr-iqamah').innerText = timeLeft(iqamahTimes.asr);
+    document.getElementById('maghrib-time').innerText = timeLeft(prayerTimes.maghrib);
+    document.getElementById('maghrib-iqamah').innerText = timeLeft(iqamahTimes.maghrib);
+    document.getElementById('isha-time').innerText = timeLeft(prayerTimes.isha);
+    document.getElementById('isha-iqamah').innerText = timeLeft(iqamahTimes.isha);
 }
 
-// Helper function to add leading zeros to single digits
-function padZero(num) {
-    return num < 10 ? `0${num}` : num;
-}
-
-// Call the update function every second to keep the timer updated
-setInterval(updatePrayerTimers, 1000);
-
-// Initial call to display the countdowns when the page loads
-updatePrayerTimers();
+// Update every second
+setInterval(updateCountdowns, 1000);
